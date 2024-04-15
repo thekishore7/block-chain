@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.6.12 <0.9.0;
+
+contract datetypes {
+  int public remperature =-10;
+    uint256 public numbers;
+    uint public age =25;
+    string public text;
+
+    struct person{
+      bool vote ;
+      string name;
+      uint age;
+    }
+    enum color { red,green,Blue}
+    color public favoritcolor ;
+    person public person ;
+    constructor (){
+      n =1 days ;
+      t="ethereum,blockchain,solidity";
+      favoritecolor =color.green;
+      person.name="kishore";
+      person.age=18;
+      person.vote=true;
+    }
+        function op(uint256 a,uint256 b) public pure returns (uint256[5] memory){
+          uint256[5] memory results;
+        }
+
+        results[0] = a+b;
+        results[1] = a-b;
+        results[2] = a*b;
+        require(b ! = 0,"divition by zero");
+        results[3] = a/b;
+        require(b ! = 0,"modules by zero");
+        results[4] = a%b;
+
+        return results;
+}
