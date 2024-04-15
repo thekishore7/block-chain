@@ -1,28 +1,33 @@
-// SPDX-License-Identifier: MIT
-pragma solidity >=0.6.12 <0.9.0;
+//  SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
 
-contract voting {
-  struct candidate {
-    uint id;
-    string name;
-    uint votecount ;
-  }
-  mapping ( uint => candidate) public candidates;
-  mapping (address => bool ) public voters ;
-  uint public candidatescount ;
-  constructor () public {
-    addcandidate("kishore");
-    addcandidate("ECE");
-  }
-  function addcandidate (string memory _name) public {
-    candidatescount++;
-    candidates[candidatescount ]=candidate(candidatescount,_name,0);
-  }
-  function vote(uint _candidateid) private{
-    require(!voters[msg.sender]);
-    require(_candidateid >0&& _candidateid <= candidatescount);
-     voters[msg.sender] =true;
-     candidates[_candidateid].votecount++;
-  }
+contract Voting {
+    struct Candidate {
+        uint id;
+        string name;
+        uint voteCount;
+    }
+
+    mapping(uint => Candidate) public candidates;
+    mapping(address => bool) public voters;
+
+    uint public candidatesCount;
+
+    constructor() public {
+        addCandidate("Candidate 1");
+        addCandidate("Candidate 2");
+    }
+
+    function addCandidate(string memory _name) private {
+        candidatesCount++;
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+    }
+
+    function vote(uint _candidateId) public {
+        require(!voters[msg.sender]);
+        require(_candidateId > 0 && _candidateId <= candidatesCount);
+
+        voters[msg.sender] = true;
+        candidates[_candidateId].voteCount++;
+    }
 }
-      
